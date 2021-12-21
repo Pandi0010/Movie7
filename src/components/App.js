@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AppRouter from "components/Router";
 import { authService } from "fbase";
-import { selectOptions } from "@testing-library/user-event/dist/select-options";
+import { selectOptions } from "@testing-library/user-event";
 
 function App() {
   const [init, setInit] = useState(false);

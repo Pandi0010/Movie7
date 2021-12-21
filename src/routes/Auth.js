@@ -18,21 +18,21 @@ const Auth = () => {
   };
   const onSubmit = async (event) => {
     event.preventDefault();
-    ry {
-        let data;
-        if (newAccount) {
-          data = await authService.createUserWithEmailAndPassword(
-            email,
-            password
-          );
-        } else {
-          data = await authService.signInWithEmailAndPassword(email, password);
-        }
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-        setError(error.message);
+    try {
+      let data;
+      if (newAccount) {
+        data = await authService.createUserWithEmailAndPassword(
+          email,
+          password
+        );
+      } else {
+        data = await authService.signInWithEmailAndPassword(email, password);
       }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
   };
   const toggleAccount = () => setNewAccount((prev) => !prev);
 
@@ -76,7 +76,8 @@ const Auth = () => {
       </form>
       <span onClick={toggleAccount}>
         {newAccount ? "Sign In" : "Create Account"}
-      </span>      <div>
+      </span>{" "}
+      <div>
         <button onClick={onSocialClick} name="google">
           Continue with Google
         </button>
